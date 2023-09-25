@@ -14,6 +14,7 @@ const MyNavbar = ({login,setLogin}) => {
   //   console.log("userLoggednav->"+userLogged)
   //   setLogin(userLogged)
   // },[])
+  //Hello Jaya
   console.log("login->"+login)
   const logoutHandler = ()=>{
     // const userLogged = localStorage.getItem("userLogged") === "true";
