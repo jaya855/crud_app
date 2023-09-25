@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router-dom';
 
 const MyNavbar = ({login,setLogin}) => {
   const navigate=useNavigate();
-  const userLogged=""
+  // const userLogged=""
   
   // useEffect(()=>{
   //   const userLogged = localStorage.getItem("userLogged") ;
