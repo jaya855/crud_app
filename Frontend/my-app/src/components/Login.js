@@ -21,8 +21,8 @@ const Login = ({login,setLogin}) => {
       const response = await axios.post('http://localhost:4000/api/v1/auth/login',formData);
       console.log("response->"+JSON.stringify(response))
       console.log(response.data.message);
-      localStorage.setItem("userLogged",true)
-      setLogin(!login)
+      localStorage.setItem("userLogged","true")
+      setLogin("true")
       navigate('/dashboard')
     }
     catch(error){

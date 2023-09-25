@@ -1,4 +1,4 @@
-import {useState, React} from 'react'
+import {useState, React, useEffect} from 'react'
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
@@ -9,11 +9,17 @@ import { useNavigate } from 'react-router-dom';
 const MyNavbar = ({login,setLogin}) => {
   const navigate=useNavigate();
   
+  // useEffect(()=>{
+  //   const userLogged = localStorage.getItem("userLogged") ;
+  //   console.log("userLoggednav->"+userLogged)
+  //   setLogin(userLogged)
+  // },[])
   console.log("login->"+login)
   const logoutHandler = ()=>{
     // const userLogged = localStorage.getItem("userLogged") === "true";
-    localStorage.setItem("userLogged",false)
-    setLogin(!login)
+    localStorage.setItem("userLogged","false")
+    setLogin(false)
+    navigate("/")
   }
   return (
     <div className='mynav'>
@@ -27,7 +33,9 @@ const MyNavbar = ({login,setLogin}) => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           />
-          {(login==true) ?
+          {console.log("loginIn->"+login)}
+          {console.log(typeof(login))}
+          {(login==="true")?
           
             <button className="btn text-white bg-slate-500 btn-lg" onClick={logoutHandler}>
             LOGOUT 
