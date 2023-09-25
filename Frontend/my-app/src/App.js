@@ -6,11 +6,19 @@ import './App.css';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Dashboard from './components/Dashboard';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function App() {
-
-  
+  const [login,setLogin]=useState(localStorage.getItem("userLogged"));
+  console.log("app")
+  console.log("login->"+login)
+  console.log(typeof(login))
+    //    useEffect(()=>{
+    //   const userLogged = localStorage.getItem("userLogged") ;
+    // console.log("userLogged->"+userLogged)
+    //   setLogin(userLogged)
+    //    },[])
+  console.log("Applogin->"+login)
   return (
     <div className="App myApp">
       <MyNavbar  />
