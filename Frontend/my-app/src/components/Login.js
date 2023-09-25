@@ -22,7 +22,7 @@ const Login = ({login,setLogin}) => {
       console.log("response->"+JSON.stringify(response))
       console.log(response.data.message);
       localStorage.setItem("userLogged",true)
-      setLogin(!login)
+      
       navigate('/dashboard')
     }
     catch(error){

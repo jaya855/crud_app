@@ -6,14 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 
-const MyNavbar = ({login,setLogin}) => {
+const MyNavbar = () => {
   const navigate=useNavigate();
+  const userLogged=""
   
-  console.log("login->"+login)
   const logoutHandler = ()=>{
-    // const userLogged = localStorage.getItem("userLogged") === "true";
-    localStorage.setItem("userLogged",false)
-    setLogin(!login)
+   
+    localStorage.setItem("userLogged", "false");
+   
   }
   return (
     <div className='mynav'>
@@ -27,18 +27,20 @@ const MyNavbar = ({login,setLogin}) => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           />
-          {(login==true) ?
+          {userLogged ?
+          (
           
             <button className="btn text-white bg-slate-500 btn-lg" onClick={logoutHandler}>
             LOGOUT 
-          </button>
+           </button>
+          )
           :
-            <button className="btn text-white bg-slate-500 btn-lg hover:bg-slate-700"  onClick = {()=>navigate("/login")}
+          (<button className="btn text-white bg-slate-500 btn-lg hover:bg-slate-700"  onClick = {()=>navigate("/login")}
             >
             LOGIN 
-          </button>
+           </button>
             
-          
+          )
           }
         </Navbar.Collapse>
       </Container>
