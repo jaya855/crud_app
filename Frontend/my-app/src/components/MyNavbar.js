@@ -6,8 +6,9 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 
-const MyNavbar = ({login,setLogin}) => {
+const MyNavbar = () => {
   const navigate=useNavigate();
+  const userLogged=""
   
   // useEffect(()=>{
   //   const userLogged = localStorage.getItem("userLogged") ;
@@ -36,18 +37,19 @@ const MyNavbar = ({login,setLogin}) => {
           />
           {console.log("loginIn->"+login)}
           {console.log(typeof(login))}
-          {(login==="true")?
+          {(login==="true")?(
           
             <button className="btn text-white bg-slate-500 btn-lg" onClick={logoutHandler}>
             LOGOUT 
-          </button>
+           </button>
+          )
           :
-            <button className="btn text-white bg-slate-500 btn-lg hover:bg-slate-700"  onClick = {()=>navigate("/login")}
+          (<button className="btn text-white bg-slate-500 btn-lg hover:bg-slate-700"  onClick = {()=>navigate("/login")}
             >
             LOGIN 
-          </button>
+           </button>
             
-          
+          )
           }
         </Navbar.Collapse>
       </Container>
