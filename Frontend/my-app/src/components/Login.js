@@ -20,7 +20,7 @@ const Login = ({login,setLogin}) => {
       console.log(formData)
       const response = await axios.post('http://localhost:4000/api/v1/auth/login',formData);
       console.log("response->"+JSON.stringify(response))
-      console.log(response.data.message);
+      console.log(response);
       localStorage.setItem("userLogged","true")
       setLogin("true")
       navigate('/dashboard')
@@ -28,7 +28,7 @@ const Login = ({login,setLogin}) => {
     catch(error){
        console.log(error);
       //  console.log('error.response.data.message');
-       alert(error.response.data.message);
+       alert(error);
     }
   }
 

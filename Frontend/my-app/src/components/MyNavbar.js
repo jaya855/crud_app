@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import { useNavigate } from 'react-router-dom';
 
 
-const MyNavbar = () => {
+const MyNavbar = ({login,setLogin}) => {
   const navigate=useNavigate();
   const userLogged=""
   

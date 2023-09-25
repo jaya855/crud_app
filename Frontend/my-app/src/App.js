@@ -21,12 +21,12 @@ function App() {
   console.log("Applogin->"+login)
   return (
     <div className="App myApp">
-      <MyNavbar  />
+      <MyNavbar  login={login} setLogin={setLogin} />
     
       <Routes>
         {/* my routes */}
         <Route path='/' element={<Homepage />} />
-        <Route path='/login' element={<Login/>} />
+        <Route path='/login' element={<Login login={login} setLogin={setLogin}/>} />
         <Route path='/signup' element={<Signup/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
       </Routes>
