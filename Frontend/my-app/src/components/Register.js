@@ -34,7 +34,7 @@ const Register = () => {
       const response = await axios.post('http://localhost:4000/api/v1/userDetails/register',formData);
       alert("data added successfully");
       console.log("data added successfully");
-      Navigate('/')
+      Navigate('/dashboard')
       }
       catch(error){
         alert("data not added");
@@ -45,42 +45,44 @@ const Register = () => {
     }
 
     return (
-        <div className="container">
+        <div className=" bg-black">
+        <div className="container bg-slate-500">
            
             <form className="mt-4">
                 <div className="row">
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputEmail1" className="form-label">Name</label>
-                        <input type="text" value={formData.name} onChange={changeHandler} name="name" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" />
+                        <label for="exampleInputEmail1" className="form-label font-semibold">Name</label>
+                        <input type="text" value={formData.name} onChange={changeHandler} name="name" className="form-control border-2 border-blue-600 font-bold bg-slate-100" id="exampleInputEmail1" aria-describedby="emailHelp" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" className="form-label">email</label>
-                        <input type="email" value={formData.email} onChange={changeHandler} name="email" className="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" className="form-label font-semibold">email</label>
+                        <input type="email" value={formData.email} onChange={changeHandler} name="email" className=" bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" className="form-label">age</label>
-                        <input type="text" value={formData.age} onChange={changeHandler} name="age" className="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" className="form-label font-semibold">age</label>
+                        <input type="text" value={formData.age} onChange={changeHandler} name="age" className="bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" className="form-label">Mobile</label>
-                        <input type="number" value={formData.mobile} onChange={changeHandler} name="mobile" className="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" className="form-label font-semibold">Mobile</label>
+                        <input type="number" value={formData.mobile} onChange={changeHandler} name="mobile" className="bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Work</label>
-                        <input type="text" value={formData.work} onChange={changeHandler} name="work" className="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" class="form-label font-semibold">Work</label>
+                        <input type="text" value={formData.work} onChange={changeHandler} name="work" className="bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Address</label>
-                        <input type="text" value={formData.add} onChange={changeHandler} name="add" className="form-control" id="exampleInputPassword1" />
+                        <label for="exampleInputPassword1" class="form-label font-semibold">Address</label>
+                        <input type="text" value={formData.add} onChange={changeHandler} name="add" className="bg-slate-100 form-control border-2  border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-12 col-md-12 col-12">
-                        <label for="exampleInputPassword1" class="form-label">Description</label>
-                        <textarea name="desc" value={formData.desc} onChange={changeHandler} className="form-control" id="" cols="30" rows="5"></textarea>
+                        <label for="exampleInputPassword1" class="form-label font-semibold">Description</label>
+                        <textarea name="desc" value={formData.desc} onChange={changeHandler} className="bg-slate-100 form-control border-2 border-blue-600" id="" cols="30" rows="5"></textarea>
                     </div>
 
-                    <button type="submit" onClick={submitHandler} className="btn btn-primary bg-slate-800 text-lg  text-zinc-950">Submit</button>
+                    <button type="submit" onClick={submitHandler} className="btn btn-primary bg-slate-800 text-lg font-bold text-amber-50">Submit</button>
                 </div>
             </form>
+        </div>
         </div>
     )
 }

@@ -10,6 +10,7 @@ import Dashboard from './components/Dashboard';
 import { useEffect, useState } from 'react';
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css"
 import "../node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"
+import Detail from './components/Detail';
 
 function App() {
   const [login,setLogin]=useState(localStorage.getItem("userLogged"));
@@ -29,6 +30,7 @@ function App() {
         <Route path='/signup' element={<Signup/>} />
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/register' element={<Register/>}/>
+        <Route path='/detail/:id' element={<Detail/>}/>
       </Routes>
 
       <Footer />

@@ -1,11 +1,36 @@
-import React from 'react'
-import {useNavigate} from 'react-router-dom'
+import axios from 'axios'
+import React, { useState,useEffect } from 'react'
+import {NavLink, useNavigate} from 'react-router-dom'
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
+import CreateIcon from '@mui/icons-material/Create';
+import DeleteOutlineIcon from '@mui/icons-material/DeleteOutline';
+
 
 const Dashboard = () => {
   const Navigate=useNavigate()
   const handleAddUser=()=>{
     Navigate('/register')
   }
+  const [allData,setAllData]=useState([]);
+  const getAllData=async()=>{
+  try{
+    const response= await axios.get('http://localhost:4000/api/v1/userDetails/getAllData');
+  console.log("hello jaya");
+  console.log(response.data.allUsers);
+  // alert('response.data.allUsers')
+    setAllData(response.data.allUsers);
+  }
+  catch(error){
+    alert('error while fetching');
+    console.log("error while fetching")
+  }
+  }
+
+  useEffect(()=>{
+     getAllData()
+  },[])
+
+ 
   return (
    <div className='mt-5'>
 <div className='container'>
@@ -26,24 +51,29 @@ const Dashboard = () => {
     </tr>
   </thead>
   <tbody>
+{
+
+allData.map((element,i)=>{
+  return (
     <tr >
-      <th scope="row">1</th>
-      <td>meet</td>
-      <td>meet@gmail.com</td>
-      <td>webdeveloper</td>
-      <td>1234567890</td>
-      <td className='d-flex justify-content-between'>
-        <button className='btn btn-success'><i class="fas fa-eye"></i></button>
-        <button className='btn btn-primary'><i class="fas fa-pen"></i></button>
-        <button className='btn btn-danger'><i class="fas fa-trash"></i></button>
-      </td>
-    </tr>
-    
-   
-  </tbody>
+    <th scope="row">{i+1}</th>
+    <td>{element.name}</td>
+    <td>{element.email}</td>
+    <td>{element.work}</td>
+    <td>{element.mobile}</td>
+    <td className='d-flex justify-content-between'>
+      <NavLink to={`/detail/${element._id}`}><button className='btn btn-success'><RemoveRedEyeIcon/></button></NavLink>
+      <button className='btn btn-primary'><CreateIcon/></button>
+      <button className='btn btn-danger'><DeleteOutlineIcon/></button>
+    </td>
+  </tr>
+
+  )
+})
+}
+ </tbody>
+
 </table>
-
-
 </div>
    </div>
   )
