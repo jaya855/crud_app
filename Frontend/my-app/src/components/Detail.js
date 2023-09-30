@@ -7,26 +7,53 @@ import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import WorkIcon from '@mui/icons-material/Work';
 import PhoneAndroidIcon from '@mui/icons-material/PhoneAndroid';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import { NavLink, useParams, useHistory } from 'react-router-dom';
+import { NavLink, useParams, useHistory ,useNavigate} from 'react-router-dom';
+
+import Avatar from '@mui/material/Avatar';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import axios from 'axios';
 
 const Detail=()=>{
-    const [userData,setUserData]=useState([])
-    const {uid}=useParams("");
-    console.log("uid dhund rhe h")
-    console.log(uid);
+    const [loading, setLoading] = useState(true);
+
+    const Navigate=useNavigate();
+    const [userData,setUserData]=useState({})
+    console.log(userData)
+    const {id}=useParams();
+    console.log("id dhund rhe h")
+    console.log(id);
+
+   
 const getSpecificUser=async()=>{
     try{
         console.log("jaya qt")
-        console.log(uid)
-      const response = await axios.get(`http://localhost:4000/api/v1/userDetails/detail/${uid}`);
+        console.log(id)
+        console.log("backend pe api call krne ja rhe next line me")
+        console.log(id)
+      const response = await axios.get(`http://localhost:4000/api/v1/userDetails/detail/${id}`);
+      console.log(response)
+      console.log('backend se data aa gya so is line tak agye')
+      console.log("data fetched from backend->"+response)
       setUserData(response.data.specificUser);
+      setLoading(false)
       console.log(response.data.specificUser);
     }
     catch(error){
-      alert('not able to get data');
-    
+    //   alert('not able to get data');
+    console.log(error)
       console.log(error.response.data.message)
+    }
+}
+
+const handleDelete=async(id)=>{
+    try{
+    const response =await axios.delete(`http://localhost:4000/api/v1/userDetails/deleteUser/${id}`);
+   Navigate('/dashboard')
+   
+    }
+    catch(error){
+      alert(error.response.data.deletedUser);
+      console.log(error)
     }
 }
 
@@ -35,19 +62,36 @@ useEffect(()=>{
 },[])
 
 
+
     return (
         <div className="container mt-3">
-            <h1 style={{ fontWeight: 600 ,fontSize:30}}>Welcome Harsh Pathak</h1>
+           
+           { loading?(
+            <div className="container center-spinner">
+  <div className="text-center">
+    <div className="spinner-border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </div>
+  </div>
+</div>
+            ):
+            (
+
+            <>
+            <h1 style={{ fontWeight: 600 ,fontSize:30, marginBottom:15}}>Welcome {userData.name}</h1>
 
             <Card sx={{ maxWidth: 600 ,border:1,bgcolor:'grey',borderColor:'blue',boxShadow:5}}>
                 <CardContent>
                     <div className="add_btn">
-                        <button className="btn btn-primary mx-2 "><CreateIcon /></button>
-                        <button className="btn btn-danger" ><DeleteOutlineIcon /></button>
+                       <NavLink to={`/edit/${id}`}><button className="btn btn-primary mx-2 "><CreateIcon /></button></NavLink> 
+                        <button className="btn btn-danger"  onClick={()=>handleDelete(id)} ><DeleteOutlineIcon /></button>
                     </div>
                     <div className="row">
                         <div className="left_view col-lg-6 col-md-6 col-12">
-                            <img src="/profile.png" style={{ width: 50 }} alt="profile" />
+                            {/* <img src="/profile.png" style={{ width: 50 }} alt="profile" /> */}
+                            <Avatar src='https://example.com/user-profile-image.jpg'>
+                               <AccountCircleIcon />
+                            </Avatar>
                             <h3 className="mt-3 text-lg text-neutral-50">Name: <span >{userData.name}</span></h3>
                             <h3 className="mt-3 text-lg text-neutral-50">Age: <span >{userData.age}</span></h3>
                             <p className="mt-3 text-lg text-neutral-50"><MailOutlineIcon />Email: <span>{userData.email}</span></p>
@@ -63,7 +107,11 @@ useEffect(()=>{
 
                 </CardContent>
             </Card>
+            </>
+            )}
+           
         </div>
+            
     )
 }
 

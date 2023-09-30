@@ -32,7 +32,7 @@ const Register = () => {
         console.log(formData)
         const { name, email, age,mobile,work, add, desc } = formData;
       const response = await axios.post('http://localhost:4000/api/v1/userDetails/register',formData);
-      alert("data added successfully");
+     
       console.log("data added successfully");
       Navigate('/dashboard')
       }
@@ -56,11 +56,11 @@ const Register = () => {
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" className="form-label font-semibold">email</label>
-                        <input type="email" value={formData.email} onChange={changeHandler} name="email" className=" bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
+                        <input type="email" value={formData.email} onChange={changeHandler} name="email" className=" bg-slate-100 form-control border-2 border-blue-600 font-bold" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" className="form-label font-semibold">age</label>
-                        <input type="text" value={formData.age} onChange={changeHandler} name="age" className="bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
+                        <input type="text" value={formData.age} onChange={changeHandler} name="age" className="bg-slate-100 form-control border-2 border-blue-600 font-bold" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" className="form-label font-semibold">Mobile</label>
@@ -68,15 +68,15 @@ const Register = () => {
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" class="form-label font-semibold">Work</label>
-                        <input type="text" value={formData.work} onChange={changeHandler} name="work" className="bg-slate-100 form-control border-2 border-blue-600" id="exampleInputPassword1" />
+                        <input type="text" value={formData.work} onChange={changeHandler} name="work" className="bg-slate-100 font-bold form-control border-2 border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-6 col-md-6 col-12">
                         <label for="exampleInputPassword1" class="form-label font-semibold">Address</label>
-                        <input type="text" value={formData.add} onChange={changeHandler} name="add" className="bg-slate-100 form-control border-2  border-blue-600" id="exampleInputPassword1" />
+                        <input type="text" value={formData.add} onChange={changeHandler} name="add" className="bg-slate-100 font-bold form-control border-2  border-blue-600" id="exampleInputPassword1" />
                     </div>
                     <div className="mb-3 col-lg-12 col-md-12 col-12">
                         <label for="exampleInputPassword1" class="form-label font-semibold">Description</label>
-                        <textarea name="desc" value={formData.desc} onChange={changeHandler} className="bg-slate-100 form-control border-2 border-blue-600" id="" cols="30" rows="5"></textarea>
+                        <textarea name="desc" value={formData.desc} onChange={changeHandler} className="bg-slate-100 font-bold form-control border-2 border-blue-600" id="" cols="30" rows="5"></textarea>
                     </div>
 
                     <button type="submit" onClick={submitHandler} className="btn btn-primary bg-slate-800 text-lg font-bold text-amber-50">Submit</button>

@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import Homepage from './components/Homepage';
 import { Routes, Route } from 'react-router-dom'
 import './App.css';
+import Edit from './components/Edit';
 import Login from './components/Login';
 import Signup from './components/Signup';
 import Register from './components/Register';
@@ -31,6 +32,8 @@ function App() {
         <Route path='/dashboard' element={<Dashboard/>} />
         <Route path='/register' element={<Register/>}/>
         <Route path='/detail/:id' element={<Detail/>}/>
+        <Route path='/edit/:id' element={<Edit/>}/>
+        
       </Routes>
 
       <Footer />
